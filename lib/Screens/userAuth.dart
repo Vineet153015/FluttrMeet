@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:videocallapp/Pages/callPage.dart';
 
 class userAuth extends StatefulWidget {
   @override
@@ -28,32 +29,42 @@ class _userAuthState extends State<userAuth> {
                       // Customize the border color
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.blue, width: 2.0), // Border color when TextField is enabled
+                        borderSide: BorderSide(
+                            color: Colors.blue,
+                            width:
+                                2.0), // Border color when TextField is enabled
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.blue, width: 2.0), // Border color when TextField is focused
+                        borderSide: BorderSide(
+                            color: Colors.blue,
+                            width:
+                                2.0), // Border color when TextField is focused
                       ),
                       prefixIcon: Icon(Icons.person),
                     ),
                     keyboardType: TextInputType.name,
                   ),
-
                   const SizedBox(height: 20),
-
                   TextField(
-                    controller: _username,
+                    controller: _meetingID,
                     decoration: InputDecoration(
                       labelText: 'Meeting ID',
                       hintText: 'Meet ID',
                       // Customize the border color
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.blue, width: 2.0), // Border color when TextField is enabled
+                        borderSide: BorderSide(
+                            color: Colors.blue,
+                            width:
+                                2.0), // Border color when TextField is enabled
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.blue, width: 2.0), // Border color when TextField is focused
+                        borderSide: BorderSide(
+                            color: Colors.blue,
+                            width:
+                                2.0), // Border color when TextField is focused
                       ),
                       prefixIcon: Icon(Icons.numbers_outlined),
                     ),
@@ -63,7 +74,11 @@ class _userAuthState extends State<userAuth> {
                   ElevatedButton(
                     onPressed: () {
                       String userName = _username.text;
-                      print('User Name: $userName');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CallPage(
+                                  callId: _meetingID.text, name: userName)));
                     },
                     child: Text('Join Meet'),
                   ),
